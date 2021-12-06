@@ -514,7 +514,7 @@ for row in raw:
 
 grid = [[0 for col in range(1000)] for row in range(1000)]
 
-for row in raw:
+for row in raw: #just horizontal and vertical wins
     x1, y1, x2, y2 = row[0][0], row[0][1], row[1][0], row[1][1]
     if x1==x2 or y1==y2:
         if x1==x2:
@@ -525,9 +525,10 @@ for row in raw:
         else: #y1==y2
             if x1>x2:
                 x1,x2 = x2, x1
-            for i in range(x1, x2+1): #1,2;3,4 3,4;1,2
+            for i in range(x1, x2+1):
                 grid[i][y1]+=1
 getTotal(grid)
+
 grid = [[0 for col in range(1000)] for row in range(1000)]
 for row in raw:
     x1, y1, x2, y2 = row[0][0], row[0][1], row[1][0], row[1][1]
@@ -540,7 +541,7 @@ for row in raw:
         else: #y1==y2
             if x1>x2:
                 x1,x2 = x2, x1
-            for i in range(x1, x2+1): #1,2;3,4 3,4;1,2
+            for i in range(x1, x2+1): 
                 grid[i][y1]+=1
     elif (x2 > x1 and y2 > y1) or (x1 > x2 and y1 > y2):
         if x1 > x2 and y1 > y2:
@@ -550,7 +551,7 @@ for row in raw:
             for j in range(y1, y2+1):
                 if i-x1 == j-y1:
                     grid[i][j]+=1
-    elif x1>x2 and y1<y2: #6,2 2,6 (5,3; 4,4)
+    elif x1>x2 and y1<y2: 
         for i in range(x1, x2-1, -1):
             for j in range(y1, y2+1):
                 if x1-i == j-y1:
